@@ -162,15 +162,31 @@ class Manifest:
 # Provider: OpenGameArt (CC0, no auth)
 # --------------------------------------------------------------------------- #
 
+# Every entry below is CC0 (public domain) and downloadable without a login.
 OGA_ASSETS = [
-    {
-        "page": "https://opengameart.org/content/modular-racetrack-3d-models",
-        "category": "race_tracks",
-        "name": "modular_racetrack_keith",
-        "licence": "CC0-1.0",
-        "author": "Keith at Fertile Soil Productions",
-    },
+    # ---- Racing / sports / muscle cars (CC0) ----
+    {"page": "https://opengameart.org/content/racing-assets-v1", "category": "cars",
+     "name": "racing_assets_v1", "licence": "CC0-1.0", "author": "OpenGameArt contributor"},
+    {"page": "https://opengameart.org/content/car-kit", "category": "cars",
+     "name": "kenney_car_kit", "licence": "CC0-1.0", "author": "Kenney"},
+    {"page": "https://opengameart.org/content/free-low-poly-vehicles-pack", "category": "cars",
+     "name": "rgsdev_vehicles_pack", "licence": "CC0-1.0", "author": "rgsdev"},
+    {"page": "https://opengameart.org/content/low-poly-cars-0", "category": "cars",
+     "name": "quaternius_carpack", "licence": "CC0-1.0", "author": "Quaternius"},
+    {"page": "https://opengameart.org/content/low-poly-car-update-pack", "category": "cars",
+     "name": "byzmod3d_car_2023", "licence": "CC0-1.0", "author": "byzmod3d"},
+    {"page": "https://opengameart.org/content/3d-vehicles-pack", "category": "cars",
+     "name": "mehrasaur_vehicles", "licence": "CC0-1.0", "author": "mehrasaur"},
+    {"page": "https://opengameart.org/content/toy-car-kit", "category": "cars",
+     "name": "kenney_toy_car_kit", "licence": "CC0-1.0", "author": "Kenney"},
+    # ---- Modular racetrack (CC0) ----
+    {"page": "https://opengameart.org/content/modular-racetrack-3d-models", "category": "race_tracks",
+     "name": "modular_racetrack_keith", "licence": "CC0-1.0",
+     "author": "Keith at Fertile Soil Productions"},
 ]
+
+MODEL_EXTS = (".glb", ".gltf", ".obj", ".fbx")
+ALL_EXTS = MODEL_EXTS + (".mtl", ".png", ".jpg", ".jpeg")
 
 
 def _oga_zip_url(page: str) -> str | None:
@@ -192,8 +208,9 @@ def _oga_zip_url(page: str) -> str | None:
 
 def fetch_opengameart(manifest: Manifest, force: bool = False, **_):
     print("\n[opengameart] OpenGameArt (CC0)")
+    total_models = 0
     for a in OGA_ASSETS:
-        print(f"  {a['name']}: scraping {a['page']}")
+        print(f"  {a['name']}: {a['page']}")
         try:
             zip_url = _oga_zip_url(a["page"])
         except Exception as exc:  # noqa: BLE001
@@ -212,27 +229,34 @@ def fetch_opengameart(manifest: Manifest, force: bool = False, **_):
             continue
         dest_dir = OUT / a["category"] / a["name"]
         dest_dir.mkdir(parents=True, exist_ok=True)
-        kept = 0
+        kept = models = 0
         with zipfile.ZipFile(tmp) as zf:
             for member in zf.namelist():
                 if member.endswith("/"):
                     continue
                 ext = Path(member).suffix.lower()
-                if ext not in (".obj", ".mtl", ".png", ".jpg", ".jpeg", ".fbx", ".gltf", ".glb"):
+                if ext not in ALL_EXTS:
                     continue
-                target = dest_dir / Path(member).name
+                flat = Path(member).name
+                target = dest_dir / flat
+                if target.exists():  # avoid clashes across subfolders
+                    target = dest_dir / (Path(member).parent.name + "__" + flat)
                 with zf.open(member) as src, open(target, "wb") as out:
                     shutil.copyfileobj(src, out)
                 kept += 1
-        print(f"    extracted {kept} model/texture file(s) -> {dest_dir.relative_to(ROOT)}")
-        if kept:
-            # record the kit as one entry (per-file rows would be noisy)
+                if ext in MODEL_EXTS:
+                    models += 1
+        total_models += models
+        print(f"    extracted {kept} file(s), {models} model(s) -> {dest_dir.relative_to(ROOT)}")
+        model_files = sorted(p for p in dest_dir.iterdir() if p.suffix.lower() in MODEL_EXTS)
+        if model_files:
             manifest.add(
-                dest_dir / Path(urllib.parse.urlparse(zip_url).path).name,
+                model_files[0],
                 category=a["category"], licence=a["licence"], author=a["author"],
-                source=a["page"],
+                source=a["page"], note=f"{models} model file(s) in this pack",
             )
         shutil.rmtree(OUT / "_tmp", ignore_errors=True)
+    print(f"  [opengameart] total model files extracted: {total_models}")
 
 
 # --------------------------------------------------------------------------- #
