@@ -18,6 +18,26 @@ licence requires attribution (CC-BY-4.0) the author is named.
 
 | File | Licence | Author / Credit | Source |
 |---|---|---|---|
+| `pbr_materials/aerial_asphalt_01/aerial_asphalt_01_AO.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/aerial_asphalt_01 |
+| `pbr_materials/aerial_asphalt_01/aerial_asphalt_01_Diffuse.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/aerial_asphalt_01 |
+| `pbr_materials/aerial_asphalt_01/aerial_asphalt_01_Height.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/aerial_asphalt_01 |
+| `pbr_materials/aerial_asphalt_01/aerial_asphalt_01_Normal.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/aerial_asphalt_01 |
+| `pbr_materials/aerial_asphalt_01/aerial_asphalt_01_Roughness.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/aerial_asphalt_01 |
+| `pbr_materials/anti_slip_concrete/anti_slip_concrete_AO.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/anti_slip_concrete |
+| `pbr_materials/anti_slip_concrete/anti_slip_concrete_Diffuse.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/anti_slip_concrete |
+| `pbr_materials/anti_slip_concrete/anti_slip_concrete_Height.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/anti_slip_concrete |
+| `pbr_materials/anti_slip_concrete/anti_slip_concrete_Normal.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/anti_slip_concrete |
+| `pbr_materials/anti_slip_concrete/anti_slip_concrete_Roughness.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/anti_slip_concrete |
+| `pbr_materials/asphalt_01/asphalt_01_AO.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/asphalt_01 |
+| `pbr_materials/asphalt_01/asphalt_01_Diffuse.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/asphalt_01 |
+| `pbr_materials/asphalt_01/asphalt_01_Height.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/asphalt_01 |
+| `pbr_materials/asphalt_01/asphalt_01_Normal.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/asphalt_01 |
+| `pbr_materials/asphalt_01/asphalt_01_Roughness.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/asphalt_01 |
+| `pbr_materials/asphalt_02/asphalt_02_AO.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/asphalt_02 |
+| `pbr_materials/asphalt_02/asphalt_02_Diffuse.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/asphalt_02 |
+| `pbr_materials/asphalt_02/asphalt_02_Height.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/asphalt_02 |
+| `pbr_materials/asphalt_02/asphalt_02_Normal.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/asphalt_02 |
+| `pbr_materials/asphalt_02/asphalt_02_Roughness.png` | CC0-1.0 | Poly Haven | https://polyhaven.com/a/asphalt_02 |
 | `pbr_materials/carbon_fibre.glb` | CC-BY-4.0 | Wayfair / Eric Chadwick | https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CarbonFibre |
 | `pbr_materials/clearcoat_car_paint.glb` | CC0-1.0 | Khronos glTF-Sample-Assets (Ed Mackey) | https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/ClearCoatCarPaint |
 

@@ -1,7 +1,7 @@
 {
   "pack": "Realistic Racing Mega Pack",
-  "generated": "2026-10-01T07:11:30Z",
-  "asset_count": 4,
+  "generated": "2026-10-01T07:15:59Z",
+  "asset_count": 24,
   "assets": [
     {
       "category": "cars",
@@ -24,6 +24,226 @@
       "bytes": 5422412,
       "sha256": "01a60862de55cd4b9f3acfab0b0def86451800f9c42467fcd61052c16cb9838c",
       "filename": "cars/toy_car.glb"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/aerial_asphalt_01",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_asphalt_01/aerial_asphalt_01_ao_1k.png",
+      "bytes": 640881,
+      "sha256": "cb978d67894cd5133beafbec105ddb183162a8535c7b960ccdb3c32a2bbc333e",
+      "filename": "pbr_materials/aerial_asphalt_01/aerial_asphalt_01_AO.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/aerial_asphalt_01",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_asphalt_01/aerial_asphalt_01_diff_1k.png",
+      "bytes": 2337475,
+      "sha256": "2aaa24b429b395afc4309afd431edcee52bd640265f3adb5638d0d228ff33992",
+      "filename": "pbr_materials/aerial_asphalt_01/aerial_asphalt_01_Diffuse.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/aerial_asphalt_01",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_asphalt_01/aerial_asphalt_01_disp_1k.png",
+      "bytes": 1930160,
+      "sha256": "85ace5b6eb48c97d3a4ea28427147cfce8917ca0722f85a37dcc847e1f8087da",
+      "filename": "pbr_materials/aerial_asphalt_01/aerial_asphalt_01_Height.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/aerial_asphalt_01",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_asphalt_01/aerial_asphalt_01_nor_dx_1k.png",
+      "bytes": 1671704,
+      "sha256": "aea5813095e3bd62c178a5f5f1f463930ff970c6c2914cb75c0225d02128c92e",
+      "filename": "pbr_materials/aerial_asphalt_01/aerial_asphalt_01_Normal.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/aerial_asphalt_01",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/aerial_asphalt_01/aerial_asphalt_01_rough_1k.png",
+      "bytes": 525889,
+      "sha256": "9ed62332d843291ee378bb8d1181bc58264fa417671cc116a9ef4b38b61fbe49",
+      "filename": "pbr_materials/aerial_asphalt_01/aerial_asphalt_01_Roughness.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/anti_slip_concrete",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/anti_slip_concrete/anti_slip_concrete_ao_1k.png",
+      "bytes": 1862547,
+      "sha256": "1303d1c36ba3be91580aff7acc0e09e3e7dc4fd26b72b78df135a8b2e6248852",
+      "filename": "pbr_materials/anti_slip_concrete/anti_slip_concrete_AO.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/anti_slip_concrete",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/anti_slip_concrete/anti_slip_concrete_diff_1k.png",
+      "bytes": 5863179,
+      "sha256": "b528ae858e0d3c8aa8edb2b15decad4a0a4b0026a6927c57b843fc88f859e091",
+      "filename": "pbr_materials/anti_slip_concrete/anti_slip_concrete_Diffuse.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/anti_slip_concrete",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/anti_slip_concrete/anti_slip_concrete_disp_1k.png",
+      "bytes": 1700375,
+      "sha256": "f2839abc38f90acf1d1889d2dd0e1515abda67a2a079268e57d15514bef73dce",
+      "filename": "pbr_materials/anti_slip_concrete/anti_slip_concrete_Height.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/anti_slip_concrete",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/anti_slip_concrete/anti_slip_concrete_nor_dx_1k.png",
+      "bytes": 5719859,
+      "sha256": "1c3c4d4f3d60734aec9a87ed2bc26e4317f79ab3217fd145c598ff9f3496f678",
+      "filename": "pbr_materials/anti_slip_concrete/anti_slip_concrete_Normal.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/anti_slip_concrete",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/anti_slip_concrete/anti_slip_concrete_rough_1k.png",
+      "bytes": 1598753,
+      "sha256": "1105746a45d305900f7ae0c6eee75744b2e3cfd53e117e239e30c787bfc734d4",
+      "filename": "pbr_materials/anti_slip_concrete/anti_slip_concrete_Roughness.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/asphalt_01",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/asphalt_01/asphalt_01_ao_1k.png",
+      "bytes": 2036028,
+      "sha256": "f3228014b044e689c1d9560b1fabee8bf3dbaef9de7fd766f12d3dc7e26e8bbe",
+      "filename": "pbr_materials/asphalt_01/asphalt_01_AO.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/asphalt_01",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/asphalt_01/asphalt_01_diff_1k.png",
+      "bytes": 5542603,
+      "sha256": "ee14130546f36a9e96d9286ba39643158ceabb6dfc2b31fb9f6825075bde6d18",
+      "filename": "pbr_materials/asphalt_01/asphalt_01_Diffuse.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/asphalt_01",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/asphalt_01/asphalt_01_disp_1k.png",
+      "bytes": 1760896,
+      "sha256": "ed51b0849b1d0ce99ddfec933f8eb7fcf84865cf6964beea7f53b84f06c71ed4",
+      "filename": "pbr_materials/asphalt_01/asphalt_01_Height.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/asphalt_01",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/asphalt_01/asphalt_01_nor_dx_1k.png",
+      "bytes": 5938123,
+      "sha256": "1040959ab3701c9b4c2d65fab1bb27257c309c2e2e89008b5b452040b46bd4ad",
+      "filename": "pbr_materials/asphalt_01/asphalt_01_Normal.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/asphalt_01",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/asphalt_01/asphalt_01_rough_1k.png",
+      "bytes": 1661934,
+      "sha256": "7c6a2a42b59e37ea1796aedbc54f777c874ea2f2db790790b9344d6a2b6f8398",
+      "filename": "pbr_materials/asphalt_01/asphalt_01_Roughness.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/asphalt_02",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/asphalt_02/asphalt_02_ao_1k.png",
+      "bytes": 733585,
+      "sha256": "baef7dbfc709700f4caeb8ec96282f56996deaaf066abe6e978758f2e14c2373",
+      "filename": "pbr_materials/asphalt_02/asphalt_02_AO.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/asphalt_02",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/asphalt_02/asphalt_02_diff_1k.png",
+      "bytes": 2485545,
+      "sha256": "68f85c76965ea664d500839c7ffe28fc7f2ddd297db32323dd63976589316bd3",
+      "filename": "pbr_materials/asphalt_02/asphalt_02_Diffuse.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/asphalt_02",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/asphalt_02/asphalt_02_disp_1k.png",
+      "bytes": 2223353,
+      "sha256": "67138261342f563de924a0c2337300de283bff469d321d21e6fcbeae1bd8cb07",
+      "filename": "pbr_materials/asphalt_02/asphalt_02_Height.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/asphalt_02",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/asphalt_02/asphalt_02_nor_dx_1k.png",
+      "bytes": 2322926,
+      "sha256": "9419ee53eb478f9eb79c2655b619458a93f0e59ac4a646ba936fddb1a8dee5dc",
+      "filename": "pbr_materials/asphalt_02/asphalt_02_Normal.png"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "polyhaven",
+      "license": "CC0-1.0",
+      "author": "Poly Haven",
+      "source": "https://polyhaven.com/a/asphalt_02",
+      "asset_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/asphalt_02/asphalt_02_rough_1k.png",
+      "bytes": 732747,
+      "sha256": "aa820bd79355a4b5a94e14915f275584080a071c45a218a13ca61c2840158300",
+      "filename": "pbr_materials/asphalt_02/asphalt_02_Roughness.png"
     },
     {
       "category": "pbr_materials",
