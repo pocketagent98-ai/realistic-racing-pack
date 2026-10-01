@@ -1,0 +1,89 @@
+name: Build Racing Cars Mega Pack
+
+# Manual (1-click) run, plus a run whenever the external fetcher or this
+# workflow changes. Kept separate from the "Realistic" pack so the two never
+# interfere.
+on:
+  workflow_dispatch:
+    inputs:
+      cars:
+        description: "How many racing cars to collect from Poly Pizza"
+        required: false
+        default: "70"
+        type: string
+  push:
+    branches: [main]
+    paths:
+      - "fetch_external_pack.py"
+      - ".github/workflows/build_racing_cars_pack.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: racing-cars-pack-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  ZIP_NAME: Racing_Cars_Mega_Pack.zip
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch external assets (OpenGameArt + Poly Pizza)
+        env:
+          POLY_PIZZA_API_KEY: ${{ secrets.POLY_PIZZA_API_KEY }}
+        run: |
+          CARS="${{ github.event.inputs.cars || '70' }}"
+          python fetch_external_pack.py --cars "$CARS"
+
+      - name: Show resulting tree
+        run: |
+          find racing_pack -type f | sort | head -200
+          echo "---- manifest ----"
+          cat racing_pack/manifest.json || true
+
+      - name: Build ${{ env.ZIP_NAME }}
+        run: |
+          if [ ! -d racing_pack ] || [ -z "$(find racing_pack -type f -name '*.glb' -o -type f -name '*.obj' | head -1)" ]; then
+            echo "::error::racing_pack is empty — nothing to package."
+            exit 1
+          fi
+          cd racing_pack
+          zip -r -9 "../${ZIP_NAME}" . -x "*.part" -x "_tmp/*"
+          cd ..
+          ls -lh "${ZIP_NAME}"
+
+      - name: Compute tag
+        id: meta
+        run: echo "tag=cars-v$(date -u +%Y.%m.%d)-run${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: "Racing Cars Mega Pack ${{ steps.meta.outputs.tag }}"
+          body: |
+            ## Racing Cars Mega Pack
+
+            Free racing cars and modular track pieces collected from open sources.
+
+            **Direct download:** [`${{ env.ZIP_NAME }}`](https://github.com/${{ github.repository }}/releases/latest/download/${{ env.ZIP_NAME }})
+
+            - `cars/` — racing car models (`.glb`) from Poly Pizza (CC0 / CC-BY)
+            - `race_tracks/` — modular track kit (`.obj`) from OpenGameArt (CC0)
+            - `manifest.json` / `CREDITS.md` — licence + attribution per asset
+
+            CC0 assets need no credit; CC-BY assets are credited in `CREDITS.md`.
+          files: ${{ env.ZIP_NAME }}
+          generate_release_notes: true
+          fail_on_unmatched_files: true
