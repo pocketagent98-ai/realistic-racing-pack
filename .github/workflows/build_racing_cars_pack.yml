@@ -52,14 +52,17 @@ jobs:
           echo "---- manifest ----"
           cat racing_pack/manifest.json || true
 
+      - name: Curate the pack (racing cars + track only)
+        run: python curate_pack.py
+
       - name: Build ${{ env.ZIP_NAME }}
         run: |
-          if [ ! -d racing_pack ] || [ -z "$(find racing_pack -type f -name '*.glb' -o -type f -name '*.obj' | head -1)" ]; then
-            echo "::error::racing_pack is empty — nothing to package."
+          if [ ! -d racing_pack_curated ] || [ -z "$(find racing_pack_curated -type f -name '*.glb' -o -type f -name '*.obj' -o -type f -name '*.fbx' | head -1)" ]; then
+            echo "::error::curated pack is empty — nothing to package."
             exit 1
           fi
-          cd racing_pack
-          zip -r -9 "../${ZIP_NAME}" . -x "*.part" -x "_tmp/*"
+          cd racing_pack_curated
+          zip -r -9 "../${ZIP_NAME}" .
           cd ..
           ls -lh "${ZIP_NAME}"
 
