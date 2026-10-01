@@ -1,0 +1,147 @@
+name: Build Realistic Racing Mega Pack
+
+# ---------------------------------------------------------------------------
+# Triggers
+#   * workflow_dispatch  -> manual "1-click" run from the Actions tab, with
+#                           optional inputs for provider set / resolution.
+#   * push               -> automatic rebuild + release whenever the fetcher,
+#                           the workflow, or the committed assets change.
+# ---------------------------------------------------------------------------
+on:
+  workflow_dispatch:
+    inputs:
+      providers:
+        description: "Space-separated providers to run"
+        required: false
+        default: "khronos polyhaven"
+        type: string
+      resolution:
+        description: "Preferred PBR texture resolution"
+        required: false
+        default: "1k"
+        type: choice
+        options:
+          - 1k
+          - 2k
+          - 4k
+  push:
+    branches: [main]
+    paths:
+      - "fetch_assets.py"
+      - "assets/**"
+      - ".github/workflows/build_racing_pack.yml"
+      - "requirements.txt"
+
+# Needed so the workflow can create a Release and push a tag.
+permissions:
+  contents: write
+
+# Never run two pack builds at once.
+concurrency:
+  group: racing-pack-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PACK_NAME: Realistic_Racing_Mega_Pack
+  ZIP_NAME: Realistic_Racing_Mega_Pack.zip
+
+jobs:
+  build-and-release:
+    name: Fetch assets, zip, release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # ------------------------------------------------------------------ #
+      # 1. Fetch the assets
+      # ------------------------------------------------------------------ #
+      - name: Fetch open-licence assets
+        env:
+          # Optional: enables the Sketchfab CC0 provider (realistic CC0 cars
+          # and wheel/tyre kits). Add the secret in repo Settings -> Secrets.
+          SKETCHFAB_TOKEN: ${{ secrets.SKETCHFAB_TOKEN }}
+        run: |
+          PROVIDERS="${{ github.event.inputs.providers || 'khronos polyhaven' }}"
+          RESOLUTION="${{ github.event.inputs.resolution || '1k' }}"
+          echo "Providers : $PROVIDERS"
+          echo "Resolution: $RESOLUTION"
+          python fetch_assets.py --providers $PROVIDERS --resolution "$RESOLUTION"
+
+      - name: Show resulting asset tree
+        run: |
+          echo "== assets/ =="
+          find assets -type f ! -name '.gitkeep' | sort
+          echo
+          echo "== manifest =="
+          cat assets/manifest.json
+
+      # ------------------------------------------------------------------ #
+      # 2. Compress the whole assets/ directory into one ZIP
+      # ------------------------------------------------------------------ #
+      - name: Build ${{ env.ZIP_NAME }}
+        run: |
+          cd assets
+          # Deterministic, archive-friendly zip of the entire asset tree.
+          zip -r -9 "../${ZIP_NAME}" . -x "*.gitkeep"
+          cd ..
+          echo "Built ${ZIP_NAME}:"
+          ls -lh "${ZIP_NAME}"
+
+      # ------------------------------------------------------------------ #
+      # 3. Publish a GitHub Release with the ZIP attached (1-click download)
+      # ------------------------------------------------------------------ #
+      - name: Compute release tag
+        id: meta
+        run: |
+          echo "tag=v$(date -u +%Y.%m.%d)-run${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.meta.outputs.tag }}
+          name: "Realistic Racing Mega Pack ${{ steps.meta.outputs.tag }}"
+          body: |
+            ## Realistic Racing Mega Pack
+
+            Automated build of open-licence (CC0 / CC-BY) realistic racing 3D assets.
+
+            **Direct download:** [`${{ env.ZIP_NAME }}`](https://github.com/${{ github.repository }}/releases/latest/download/${{ env.ZIP_NAME }})
+
+            **Contents**
+            - `cars/` — realistic sports / concept car meshes (`.glb`)
+            - `wheels_and_rims/` — wheels, tyres and rims
+            - `race_tracks/` — modular track pieces
+            - `pbr_materials/` — car-paint, carbon-fibre and photoscanned PBR maps
+            - `manifest.json` — machine-readable index with SHA-256 and licences
+            - `CREDITS.md` — attribution for every asset
+
+            See `assets/CREDITS.md` in the archive for per-asset licence details.
+            CC0-1.0 assets need no attribution; CC-BY-4.0 assets are credited there.
+          files: ${{ env.ZIP_NAME }}
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+
+      # Keep the freshly fetched assets on the branch so the repo is genuinely
+      # populated (and so the next run is a cache hit).
+      - name: Commit refreshed assets
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A assets
+          if git diff --cached --quiet; then
+            echo "No asset changes to commit."
+          else
+            git commit -m "chore: refresh racing assets [skip ci]"
+            git push
+          fi

@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Fetcher scratch files
+*.part
+
+# Built release archive (produced in CI, attached to a Release)
+/Realistic_Racing_Mega_Pack.zip
+
+# OS noise
+.DS_Store
+Thumbs.db

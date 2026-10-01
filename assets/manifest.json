@@ -1,0 +1,51 @@
+{
+  "pack": "Realistic Racing Mega Pack",
+  "generated": "2026-10-01T07:11:30Z",
+  "asset_count": 4,
+  "assets": [
+    {
+      "category": "cars",
+      "provider": "khronos",
+      "license": "CC-BY-4.0",
+      "author": "Darmstadt Graphics Group / Eric Chadwick (based on a CC0 model by Unity Fan)",
+      "source": "https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CarConcept",
+      "asset_url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/CarConcept/glTF-Binary/CarConcept.glb",
+      "bytes": 11778688,
+      "sha256": "c272098089d78c5cd9fd9f24ff50ee8acf8d932c55f2d55fc10adb6c8998966b",
+      "filename": "cars/car_concept.glb"
+    },
+    {
+      "category": "cars",
+      "provider": "khronos",
+      "license": "CC0-1.0",
+      "author": "3dimentional (via Khronos glTF-Sample-Assets)",
+      "source": "https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/ToyCar",
+      "asset_url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/ToyCar/glTF-Binary/ToyCar.glb",
+      "bytes": 5422412,
+      "sha256": "01a60862de55cd4b9f3acfab0b0def86451800f9c42467fcd61052c16cb9838c",
+      "filename": "cars/toy_car.glb"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "khronos",
+      "license": "CC-BY-4.0",
+      "author": "Wayfair / Eric Chadwick",
+      "source": "https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CarbonFibre",
+      "asset_url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/CarbonFibre/glTF-Binary/CarbonFibre.glb",
+      "bytes": 429880,
+      "sha256": "2def0763e86c723bccdf6ad234f4f858c678f2f2c3beee7fd1f003a1881c656e",
+      "filename": "pbr_materials/carbon_fibre.glb"
+    },
+    {
+      "category": "pbr_materials",
+      "provider": "khronos",
+      "license": "CC0-1.0",
+      "author": "Khronos glTF-Sample-Assets (Ed Mackey)",
+      "source": "https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/ClearCoatCarPaint",
+      "asset_url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/ClearCoatCarPaint/glTF-Binary/ClearCoatCarPaint.glb",
+      "bytes": 116948,
+      "sha256": "4d4b32f2ef6d341191f6b6d6834f2b192762c878cd25d44e6b4b14514cd4be93",
+      "filename": "pbr_materials/clearcoat_car_paint.glb"
+    }
+  ]
+}

@@ -19,3 +19,14 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+--------------------------------------------------------------------------
+NOTE ON ASSET LICENSING
+
+This MIT licence covers only the tooling in this repository
+(fetch_assets.py, the GitHub Actions workflow, and documentation).
+
+The 3D assets fetched into assets/ are NOT covered by this licence. Each
+asset keeps its own upstream licence — CC0-1.0 (public domain) or
+CC-BY-4.0 (attribution required). See assets/CREDITS.md and
+assets/manifest.json for the licence of every individual file.
